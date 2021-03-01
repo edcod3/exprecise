@@ -1,3 +1,5 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # Logs
 logs
 *.log
@@ -38,7 +40,8 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+react-client/node_modules
+server/node_modules
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -51,7 +54,8 @@ typings/
 .npm
 
 # Optional eslint cache
-.eslintcache
+react-client/.eslintcache
+server/.eslintcache
 
 # Microbundle cache
 .rpt2_cache/
@@ -69,8 +73,26 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
+react-client/.env
+react-client/.env.local
+react-client/.env.development
+react-client/.env.development.local
+react-client/.env.test.local
+react-client/.env.production
+react-client/.env.production.local
+
+server/.env
+server/.env.local
+server/.env.development
+server/.env.development.local
+server/.env.test.local
+server/.env.production
+server/.env.production.local
+
 .env
+.env.development
 .env.test
+.env.production
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -102,3 +124,23 @@ dist
 
 # TernJS port file
 .tern-port
+
+# prettier configuration
+.prettierrc
+
+#-React Client-
+
+# dependencies
+react-client/.pnp
+react-client/.pnp.js
+# testing
+react-client/coverage
+
+# production
+react-client/build
+
+# misc
+react-client/.DS_Store
+react-client/npm-debug.log*
+react-client/yarn-debug.log*
+react-client/yarn-error.log*
