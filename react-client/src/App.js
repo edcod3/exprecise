@@ -1,12 +1,11 @@
-import './assets/App.css';
-import Navbar from './components/muiNav';
+import Navbar from "./components/muiNav"
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-    </div>
-  );
+	return (
+		<div className="App">
+			<Navbar />
+		</div>
+	)
 }
 
-export default App;
+export default App

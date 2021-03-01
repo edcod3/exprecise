@@ -126,7 +126,8 @@ dist
 .tern-port
 
 # prettier configuration
-.prettierrc
+server/.prettierrc.json
+react-client/.prettierrc.json
 
 #-React Client-
 
