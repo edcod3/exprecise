@@ -1,4 +1,4 @@
-import Navbar from "./components/muiNav"
+import Navbar from "./components/navigation/muiNav"
 
 function App() {
 	return (

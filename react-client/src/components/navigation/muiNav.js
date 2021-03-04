@@ -10,16 +10,17 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
+//import Badge from '@material-ui/core/Badge';
 //import Container from '@material-ui/core/Container';
 //import Grid from '@material-ui/core/Grid';
 //import Paper from '@material-ui/core/Paper';
 //import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+//import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import Home from './workouts';
+import { mainListItems, secondaryListItems } from './navItems';
+import Home from '../workouts';
 
 //function Copyright() {
 //  return (
@@ -144,12 +145,12 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            Exprecise
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            {/*<Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
-            </Badge>
+            </Badge>*/}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -166,9 +167,9 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>mainListItems</List>
+        <List>{mainListItems}</List>
         <Divider />
-        <List>secondaryListItems</List>
+        <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
