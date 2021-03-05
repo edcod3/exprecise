@@ -19,17 +19,21 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 //import NotificationsIcon from "@material-ui/icons/Notifications"
 import SearchIcon from "@material-ui/icons/Search"
 //import secondaryListItems from "./navItems"
-import { mainListItems } from "./navItems"
-import Home from "../workouts"
-import AddBtn from "../buttons/add_btn"
-import { HomeStyles } from "../../css/styles"
+import { mainListItems } from "../components/navigation/navItems"
+import Home from "../components/workouts"
+import AddBtn from "../components/buttons/add_btn"
+import { HomeStyles } from "../css/styles"
 
 export default function Dashboard() {
 	const classes = HomeStyles()
 	const [open, setOpen] = useState(false)
-	const handleDrawer = () => {
-		setOpen(!open)
+	const handleDrawerOpen = () => {
+		setOpen(true)
 	}
+	const handleDrawerClose = () => {
+		setOpen(false)
+	}
+	//const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	return (
 		<div className={classes.root}>
@@ -41,7 +45,7 @@ export default function Dashboard() {
 						edge="start"
 						color="inherit"
 						aria-label="open drawer"
-						onClick={handleDrawer}
+						onClick={handleDrawerOpen}
 						className={clsx(
 							classes.menuButton,
 							open && classes.menuButtonHidden
@@ -73,10 +77,7 @@ export default function Dashboard() {
 				}}
 				open={open}>
 				<div className={classes.toolbarIcon}>
-					<Typography className={classes.toolbartitle}>
-						Menu
-					</Typography>
-					<IconButton onClick={handleDrawer}>
+					<IconButton onClick={handleDrawerClose}>
 						<ChevronLeftIcon />
 					</IconButton>
 				</div>

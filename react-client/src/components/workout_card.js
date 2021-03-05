@@ -1,32 +1,11 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
-
-const useStyles = makeStyles({
-	root: {
-		marginBottom: 20,
-		minWidth: 275,
-		marginRight: 32
-	},
-	bullet: {
-		display: "inline-block",
-		margin: "0 2px",
-		transform: "scale(0.8)"
-	},
-	title: {
-		paddingBottom: 10
-	},
-	pos: {
-		marginTop: 5,
-		marginBottom: 12,
-		fontSize: 14
-	}
-})
+import { CardStyles } from "../css/styles"
 
 export default function WOcard(props) {
-	const classes = useStyles()
+	const classes = CardStyles()
 
 	return (
 		<Card className={classes.root} variant="outlined">
@@ -37,17 +16,18 @@ export default function WOcard(props) {
 					className={classes.title}>
 					{props.data.title}
 				</Typography>
-				<Typography variant="body2" component="p">
+				<Typography
+					variant="body2"
+					component="p"
+					className={classes.desc}>
 					{props.data.desc}
 				</Typography>
 				<Typography className={classes.pos} color="textSecondary">
-					<p>
-						Reps: {props.data.weight ? props.data.weight : "None"}
-					</p>
-					<p>
-						Weight:{" "}
-						{props.data.weight ? props.data.weight + "kg" : "None"}
-					</p>
+					Reps: {props.data.weight ? props.data.weight : "None"}
+				</Typography>
+				<Typography className={classes.pos} color="textSecondary">
+					Weight:{" "}
+					{props.data.weight ? props.data.weight + "kg" : "None"}
 				</Typography>
 			</CardContent>
 		</Card>
