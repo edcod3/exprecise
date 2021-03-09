@@ -3,7 +3,7 @@ import { gql } from "@apollo/client"
 import { client } from "../utils/apollo"
 import WOcard from "./workout_card"
 
-export default function Home() {
+export default function Home(props) {
 	const [apiData, setapiData] = useState([
 		{
 			title: "No Workouts",
@@ -36,8 +36,8 @@ export default function Home() {
 	return (
 		<div>
 			<h2>Your Workouts</h2>
-			{apiData.map((data) => {
-				return <WOcard data={data} />
+			{apiData.map((data, i) => {
+				return <WOcard key={`workout-${i}`} data={data} />
 			})}
 		</div>
 	)

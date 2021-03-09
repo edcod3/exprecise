@@ -9,7 +9,7 @@ import List from "@material-ui/core/List"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
 import IconButton from "@material-ui/core/IconButton"
-import Badge from "@material-ui/core/Badge"
+//import Badge from "@material-ui/core/Badge"
 //import Container from '@material-ui/core/Container';
 //import Grid from '@material-ui/core/Grid';
 //import Paper from '@material-ui/core/Paper';
@@ -17,18 +17,27 @@ import Badge from "@material-ui/core/Badge"
 import MenuIcon from "@material-ui/icons/Menu"
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 //import NotificationsIcon from "@material-ui/icons/Notifications"
-import SearchIcon from "@material-ui/icons/Search"
+//import SearchIcon from "@material-ui/icons/Search"
 //import secondaryListItems from "./navItems"
 import { mainListItems } from "./navItems"
 import Home from "../workouts"
 import AddBtn from "../buttons/add_btn"
+import Searchbar from "../Search"
+
+//CSS Styling
 import { HomeStyles } from "../../css/styles"
 
 export default function Dashboard() {
 	const classes = HomeStyles()
 	const [open, setOpen] = useState(false)
+	const [search, setSearch] = useState()
 	const handleDrawer = () => {
 		setOpen(!open)
+	}
+
+	const handleSearch = (event) => {
+		console.log(search)
+		setSearch(event.target.value)
 	}
 
 	return (
@@ -56,11 +65,7 @@ export default function Dashboard() {
 						className={classes.title}>
 						Exprecise
 					</Typography>
-					<IconButton color="inherit">
-						<Badge color="secondary">
-							<SearchIcon />
-						</Badge>
-					</IconButton>
+					<Searchbar search={handleSearch} />
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -82,12 +87,10 @@ export default function Dashboard() {
 				</div>
 				<Divider />
 				<List>{mainListItems}</List>
-				{/*<Divider />
-				<List>{secondaryListItems}</List>*/}
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
-				<Home />
+				<Home filter={search} />
 			</main>
 			<AddBtn />
 		</div>
