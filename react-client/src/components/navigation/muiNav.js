@@ -20,24 +20,31 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 //import SearchIcon from "@material-ui/icons/Search"
 //import secondaryListItems from "./navItems"
 import { mainListItems } from "./navItems"
-import Home from "../workouts"
+import Home from "../home/workouts"
 import AddBtn from "../buttons/add_btn"
-import Searchbar from "../Search"
+import AddWorkout from "../add_workout"
+import Searchbar from "../home/Search"
 
 //CSS Styling
 import { HomeStyles } from "../../css/styles"
 
 export default function Dashboard() {
 	const classes = HomeStyles()
+
 	const [open, setOpen] = useState(false)
-	const [search, setSearch] = useState()
 	const handleDrawer = () => {
 		setOpen(!open)
 	}
 
+	const [search, setSearch] = useState("")
 	const handleSearch = (event) => {
-		console.log(search)
 		setSearch(event.target.value)
+		//console.log(search)
+	}
+
+	const [add, setAdd] = useState(false)
+	const handleAdd = () => {
+		setAdd(!add)
 	}
 
 	return (
@@ -88,11 +95,28 @@ export default function Dashboard() {
 				<Divider />
 				<List>{mainListItems}</List>
 			</Drawer>
-			<main className={classes.content}>
-				<div className={classes.appBarSpacer} />
-				<Home filter={search} />
-			</main>
-			<AddBtn />
+			{add ? (
+				<main className={classes.content}>
+					<div className={classes.appBarSpacer} />
+					<AddWorkout />
+				</main>
+			) : (
+				<main className={classes.content}>
+					<div className={classes.appBarSpacer} />
+					<Home filter={search} />
+				</main>
+			)}
+			<AddBtn btntype={add} btnhandle={handleAdd} />
 		</div>
 	)
 }
+
+/*
+	<div>
+		<main className={classes.content}>
+			<div className={classes.appBarSpacer} />
+			<Home filter={search} />
+		</main>
+		<AddBtn />
+	</div> 
+ */

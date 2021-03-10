@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { gql } from "@apollo/client"
-import { client } from "../utils/apollo"
-import WOcard from "./workout_card"
+import { client } from "../../utils/apollo"
+import WOcard from "../workout_card"
 
 export default function Home(props) {
-	const [apiData, setapiData] = useState([
-		{
-			title: "No Workouts",
-			desc: "No Data loaded",
-			reps: null,
-			weight: null
-		}
-	])
+	const [apiData, setapiData] = useState([{}])
 
 	useEffect(() => {
-		console.log("GraphQL-Apollo Client")
+		setapiData([{}])
 		client
 			.query({
 				query: gql`
@@ -33,10 +26,23 @@ export default function Home(props) {
 			})
 	}, [])
 
+	const [disData, setdisData] = useState([{}])
+	useEffect(() => {
+		setdisData([{}])
+		if (props.filter === "") {
+			setdisData(apiData)
+		} else {
+			const fltrd = apiData.filter((data) =>
+				data.title.includes(props.filter)
+			)
+			setdisData(fltrd)
+		}
+	}, [props.filter, apiData])
+
 	return (
 		<div>
 			<h2>Your Workouts</h2>
-			{apiData.map((data, i) => {
+			{disData.map((data, i) => {
 				return <WOcard key={`workout-${i}`} data={data} />
 			})}
 		</div>
