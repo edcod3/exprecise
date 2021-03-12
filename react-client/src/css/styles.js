@@ -123,3 +123,33 @@ export const HomeAddStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(1)
 	}
 }))
+
+export const AddStyles = makeStyles((theme) => ({
+	root: {
+		marginBottom: 20,
+		minWidth: 275,
+		marginRight: 32,
+		marginLeft: 32
+	},
+	title: {
+		width: "75%"
+	},
+	desc: {
+		width: "100%"
+	},
+	delete: {
+		right: 0
+	},
+	repkg_wrapper: {
+		display: "flex",
+		justifyContent: "space-between",
+		width: "100%"
+	},
+	btn_wrapper: {
+		display: "flex",
+		justifyContent: "space-between"
+	},
+	rep_kg: {
+		width: "25%"
+	}
+}))
