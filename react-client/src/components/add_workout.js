@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { gql } from "@apollo/client"
 import { client } from "../utils/apollo"
 import { useForm, Controller } from "react-hook-form"
@@ -11,19 +11,24 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import TextField from "@material-ui/core/TextField"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import { CardStyles, AddStyles } from "../css/styles"
+import Br from "../utils/Br"
+import { ExitableAlert } from "../utils/Alert"
 
-export default function AddWorkout() {
+export default function AddWorkout(props) {
 	//CSS Styles
 	const cardStyle = CardStyles().root
 	const formStyle = AddStyles()
 
 	//React-Hook-Form Stuff
-	const { handleSubmit, watch, control } = useForm()
+	const { handleSubmit, control } = useForm()
+	//const {watch} = useForm()
 	//const {register } = useForm()
 	//const { errors } = useForm()
+
+	//State
+	const [addMsg, setaddMsg] = useState({ succ: false, msg: "" })
 	const onSubmit = (data) => {
-		console.log(data)
-		console.log("Title: " + data.title)
+		//console.log(data)
 		client
 			.mutate({
 				mutation: gql`
@@ -40,8 +45,6 @@ export default function AddWorkout() {
 							weight: $weight
 						) {
 							title
-							desc
-							reps
 						}
 					}
 				`,
@@ -53,7 +56,8 @@ export default function AddWorkout() {
 				}
 			})
 			.then((result) => {
-				console.log(result.data.workouts)
+				const wo_title = result.data.add.title
+				setaddMsg({ succ: true, msg: wo_title })
 			})
 	}
 
@@ -62,6 +66,16 @@ export default function AddWorkout() {
 	return (
 		<div>
 			<h2>Add Workout</h2>
+			{addMsg.succ ? (
+				<ExitableAlert
+					severity="success"
+					open={addMsg.succ}
+					reload="true">
+					Added <b>{addMsg.msg}</b> to your Workouts!
+				</ExitableAlert>
+			) : (
+				""
+			)}
 			<Card className={cardStyle} variant="outlined">
 				<CardContent>
 					<br />
@@ -85,9 +99,7 @@ export default function AddWorkout() {
 								required: true
 							}}
 						/>
-						{[1, 2].map(() => (
-							<br />
-						))}
+						<Br />
 						<Controller
 							name="description"
 							as={
@@ -106,9 +118,7 @@ export default function AddWorkout() {
 								required: true
 							}}
 						/>
-						{[1, 2].map(() => (
-							<br />
-						))}
+						<Br />
 						<div className={formStyle.repkg_wrapper}>
 							<Controller
 								name="reps"
@@ -168,9 +178,7 @@ export default function AddWorkout() {
 								}}
 							/>
 						</div>
-						{[1, 2].map(() => (
-							<br />
-						))}
+						<Br />
 						<div className={formStyle.btn_wrapper}>
 							<Button
 								name="submit"
