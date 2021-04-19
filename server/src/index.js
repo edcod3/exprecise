@@ -10,21 +10,21 @@ let workouts = [
 		title: "push-ups",
 		desc: "Do some push-ups",
 		reps: "30",
-		kg: null,
+		kg: null
 	},
 	{
 		id: "workout-1",
 		title: "pull-ups",
 		desc: "Do some pull-ups",
 		reps: "21",
-		kg: null,
-	},
+		kg: null
+	}
 ];
 let woID = workouts.length;
 
 const resolvers = {
 	Query: {
-		workouts: () => workouts,
+		workouts: () => workouts
 	},
 	Mutation: {
 		add: (parent, args) => {
@@ -33,19 +33,30 @@ const resolvers = {
 				title: args.title,
 				desc: args.desc,
 				reps: Number(args.reps) || null,
-				weight: Number(args.weight) || null,
+				weight: Number(args.weight) || null
 			};
 			workouts.push(newWo);
 			return newWo;
 		},
+		delete: (parent, args) => {
+			for (let i = 0; i < workouts.length; i++) {
+				if (workouts[i].id == args.id) {
+					const workout_copy = workouts[i];
+					workouts.splice(i, 1);
+					return workout_copy;
+				} else {
+					continue;
+				}
+			}
+		}
 	},
 	Workout: {
 		id: (parent) => parent.id,
 		title: (parent) => parent.title,
 		desc: (parent) => parent.desc,
 		reps: (parent) => parent.reps,
-		weight: (parent) => parent.weight,
-	},
+		weight: (parent) => parent.weight
+	}
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });

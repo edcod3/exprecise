@@ -2,6 +2,7 @@ import React from "react"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
+import ButtonWrapper from "./home/ButtonWrapper"
 import { CardStyles } from "../css/styles"
 
 export default function WOcard(props) {
@@ -30,6 +31,7 @@ export default function WOcard(props) {
 					{props.data.weight ? props.data.weight + "kg" : "None"}
 				</Typography>
 			</CardContent>
+			<ButtonWrapper classes={classes} data={props.data} />
 		</Card>
 	)
 }

@@ -13,6 +13,7 @@ export default function Home(props) {
 				query: gql`
 					query {
 						workouts {
+							id
 							title
 							desc
 							reps

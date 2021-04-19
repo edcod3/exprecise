@@ -93,7 +93,10 @@ export const CardStyles = makeStyles({
 	root: {
 		marginBottom: 20,
 		minWidth: 275,
-		marginRight: 32
+		marginRight: 32,
+		display: "flex",
+		alignItems: "flex-start",
+		justifyContent: "space-between"
 	},
 	title: {
 		paddingBottom: 10
@@ -106,6 +109,18 @@ export const CardStyles = makeStyles({
 		marginTop: 10,
 		marginBottom: 10,
 		fontSize: 14
+	},
+	btn_wrapper: {
+		marginRight: 20,
+		marginTop: 35,
+		paddingRight: 10,
+		textAlign: "center"
+	},
+	btn: {
+		margin: 10,
+		marginTop: 10,
+		marginBottom: 15,
+		width: "90%"
 	}
 })
 
