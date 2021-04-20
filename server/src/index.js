@@ -9,14 +9,14 @@ let workouts = [
 		id: "workout-0",
 		title: "push-ups",
 		desc: "Do some push-ups",
-		reps: "30",
+		reps: 30,
 		kg: null
 	},
 	{
 		id: "workout-1",
 		title: "pull-ups",
 		desc: "Do some pull-ups",
-		reps: "21",
+		reps: 21,
 		kg: null
 	}
 ];
@@ -44,6 +44,23 @@ const resolvers = {
 					const workout_copy = workouts[i];
 					workouts.splice(i, 1);
 					return workout_copy;
+				} else {
+					continue;
+				}
+			}
+		},
+		edit: (parent, args) => {
+			for (let i = 0; i < workouts.length; i++) {
+				if (workouts[i].id == args.original_id) {
+					const new_workout = {
+						id: args.original_id,
+						title: args.title || workouts[i].title,
+						desc: args.desc || workouts[i].desc,
+						reps: args.reps,
+						weight: args.weight
+					};
+					workouts.splice(i, 1, new_workout);
+					return new_workout;
 				} else {
 					continue;
 				}

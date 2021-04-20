@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { gql } from "@apollo/client"
 import { client } from "../../utils/apollo"
-import WOcard from "../workout_card"
+//import WorkoutCard from "../cards/WorkoutCard"
+import WorkoutWrapper from "../cards/CardWrapper"
 
 export default function Home(props) {
 	const [apiData, setapiData] = useState([{}])
@@ -17,6 +18,7 @@ export default function Home(props) {
 							title
 							desc
 							reps
+							weight
 						}
 					}
 				`
@@ -44,7 +46,7 @@ export default function Home(props) {
 		<div>
 			<h2>Your Workouts</h2>
 			{disData.map((data, i) => {
-				return <WOcard key={`workout-${i}`} data={data} />
+				return <WorkoutWrapper key={`workout-${i}`} data={data} />
 			})}
 		</div>
 	)

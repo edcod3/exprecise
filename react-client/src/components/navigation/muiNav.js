@@ -22,7 +22,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 import { mainListItems } from "./navItems"
 import Home from "../home/workouts"
 import AddBtn from "../buttons/add_btn"
-import AddWorkout from "../add_workout"
+import AddWorkout from "../cards/add_workout"
 import Searchbar from "../home/Search"
 
 //CSS Styling

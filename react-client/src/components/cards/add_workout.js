@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { gql } from "@apollo/client"
-import { client } from "../utils/apollo"
+import { client } from "../../utils/apollo"
 import { useForm, Controller } from "react-hook-form"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
@@ -10,9 +10,9 @@ import Icon from "@material-ui/core/Icon"
 import DeleteIcon from "@material-ui/icons/Delete"
 import TextField from "@material-ui/core/TextField"
 import InputAdornment from "@material-ui/core/InputAdornment"
-import { CardStyles, AddStyles } from "../css/styles"
-import Br from "../utils/Br"
-import { ExitableAlert } from "../utils/Alert"
+import { CardStyles, AddStyles } from "../../css/styles"
+import Br from "../../utils/Br"
+import { ExitableAlert } from "../../utils/Alert"
 
 export default function AddWorkout(props) {
 	//CSS Styles

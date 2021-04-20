@@ -6,6 +6,7 @@ import DeleteButton from "../buttons/del_btn"
 import EditButton from "../buttons/edit_btn"
 
 export default function ButtonWrapper(props) {
+	//const [showEdit, setshowEdit] = useState(false)
 	//const [delShow, setdelShow] = useState({ visible: false, title: "" })
 
 	const handleDelete = () => {
@@ -31,7 +32,10 @@ export default function ButtonWrapper(props) {
 	}
 	return (
 		<div className={props.classes.btn_wrapper}>
-			<EditButton className={props.classes.btn} />
+			<EditButton
+				className={props.classes.btn}
+				onClick={() => props.reload()}
+			/>
 			<br />
 			<DeleteButton
 				className={props.classes.btn}

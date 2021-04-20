@@ -10,6 +10,8 @@ export function ExitableAlert(props) {
 	const handleClose = (event, reason) => {
 		if (props.reload === "true") {
 			window.location.reload()
+		} else if (props.reload === "props-true") {
+			props.props_reload()
 		}
 		setOpen(false)
 	}

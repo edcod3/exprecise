@@ -2,10 +2,10 @@ import React from "react"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
-import ButtonWrapper from "./home/ButtonWrapper"
-import { CardStyles } from "../css/styles"
+import ButtonWrapper from "../home/ButtonWrapper"
+import { CardStyles } from "../../css/styles"
 
-export default function WOcard(props) {
+export default function WorkoutCard(props) {
 	const classes = CardStyles()
 
 	return (
@@ -24,14 +24,20 @@ export default function WOcard(props) {
 					{props.data.desc}
 				</Typography>
 				<Typography className={classes.pos} color="textSecondary">
-					Reps: {props.data.weight ? props.data.weight : "None"}
+					Reps: {props.data.reps ? props.data.reps : "None"}
 				</Typography>
 				<Typography className={classes.pos} color="textSecondary">
 					Weight:{" "}
-					{props.data.weight ? props.data.weight + "kg" : "None"}
+					{props.data.weight
+						? props.data.weight.toString() + "kg"
+						: "None"}
 				</Typography>
 			</CardContent>
-			<ButtonWrapper classes={classes} data={props.data} />
+			<ButtonWrapper
+				classes={classes}
+				data={props.data}
+				reload={props.reload}
+			/>
 		</Card>
 	)
 }

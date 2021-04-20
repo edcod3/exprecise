@@ -8,6 +8,13 @@ module.exports = gql`
 	type Mutation {
 		add(title: String!, desc: String!, reps: Int, weight: Int): Workout!
 		delete(id: ID!): Workout!
+		edit(
+			original_id: ID!
+			title: String
+			desc: String
+			reps: Int
+			weight: Int
+		): Workout!
 	}
 
 	type Workout {
