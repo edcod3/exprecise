@@ -1,5 +1,7 @@
 const { ApolloServer } = require("apollo-server");
 
+//MongoDB Initialization
+const mongo = require("./mongo");
 //Type Definition
 const typeDefs = require("./typeDefs");
 

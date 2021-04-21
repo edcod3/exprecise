@@ -82,6 +82,7 @@ react-client/.env.production
 react-client/.env.production.local
 
 server/.env
+server/src/.env
 server/.env.local
 server/.env.development
 server/.env.development.local

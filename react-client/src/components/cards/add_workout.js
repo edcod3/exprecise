@@ -35,8 +35,8 @@ export default function AddWorkout(props) {
 					mutation AddWorkout(
 						$title: String!
 						$desc: String!
-						$reps: Int!
-						$weight: Int!
+						$reps: Int
+						$weight: Int
 					) {
 						add(
 							title: $title
@@ -170,7 +170,7 @@ export default function AddWorkout(props) {
 								control={control}
 								defaultValue=""
 								rules={{
-									required: true,
+									required: false,
 									pattern: {
 										value: /[0-9]/i,
 										message: "Weight count is invalid"
