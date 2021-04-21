@@ -141,7 +141,7 @@ export default function AddWorkout(props) {
 								control={control}
 								defaultValue=""
 								rules={{
-									required: true,
+									required: false,
 									pattern: {
 										value: /[0-9]/i,
 										message: "Rep count is invalid"

@@ -6,7 +6,8 @@ const CONNECT_URL = process.env.CONN_URL;
 mongoose
 	.connect(CONNECT_URL, {
 		useNewUrlParser: true,
-		useUnifiedTopology: true
+		useUnifiedTopology: true,
+		useFindAndModify: false
 	})
 	.then(() => {
 		console.log("Connected to MongoDB");
@@ -15,7 +16,7 @@ mongoose
 
 const workoutSchema = new mongoose.Schema({
 	title: String,
-	description: String,
+	desc: String,
 	weight: Number,
 	reps: Number
 });
