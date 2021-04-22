@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { gql } from "@apollo/client"
 import { client } from "../../utils/apollo"
 //import WorkoutCard from "../cards/WorkoutCard"
 import WorkoutWrapper from "../cards/CardWrapper"
+import { SearchContext } from "../navigation/muiNav"
 
-export default function Home(props) {
+export default function Home() {
 	const [apiData, setapiData] = useState([{}])
+
+	const filter = useContext(SearchContext)
 
 	useEffect(() => {
 		setapiData([{}])
@@ -32,15 +35,13 @@ export default function Home(props) {
 	const [disData, setdisData] = useState([{}])
 	useEffect(() => {
 		setdisData([{}])
-		if (props.filter === "" || props.filter === undefined) {
+		if (filter === "" || filter === undefined) {
 			setdisData(apiData)
 		} else {
-			const fltrd = apiData.filter((data) =>
-				data.title.includes(props.filter)
-			)
+			const fltrd = apiData.filter((data) => data.title.includes(filter))
 			setdisData(fltrd)
 		}
-	}, [props.filter, apiData])
+	}, [filter, apiData])
 
 	return (
 		<div>

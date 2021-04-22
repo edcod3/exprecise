@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, createContext } from "react"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Drawer from "@material-ui/core/Drawer"
@@ -20,13 +20,16 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 //import SearchIcon from "@material-ui/icons/Search"
 //import secondaryListItems from "./navItems"
 import { mainListItems } from "./navItems"
-import Home from "../home/workouts"
+//import Home from "../home/workouts"
 import AddBtn from "../buttons/add_btn"
-import AddWorkout from "../cards/add_workout"
+//import AddWorkout from "../cards/add_workout"
 import Searchbar from "../home/Search"
 
 //CSS Styling
 import { HomeStyles } from "../../css/styles"
+
+//Search Bar Context
+export const SearchContext = createContext("")
 
 export default function Dashboard(props) {
 	const classes = HomeStyles()
@@ -97,22 +100,9 @@ export default function Dashboard(props) {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
-				{/*props.home ? (
-					add ? (
-						<AddWorkout />
-					) : (
-						<Home filter={search} />
-					)
-				) : (
-					props.children
-				)*/}
-				{/*React.Children.map(props.children, (child) => {
-					console.log(child)
-					return React.cloneElement(child, {
-						filter: search
-					})
-				})*/}
-				{props.children}
+				<SearchContext.Provider value={search}>
+					{props.children}
+				</SearchContext.Provider>
 			</main>
 			<AddBtn btntype={add} btnhandle={handleAdd} />
 		</div>
