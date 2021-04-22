@@ -28,7 +28,7 @@ import Searchbar from "../home/Search"
 //CSS Styling
 import { HomeStyles } from "../../css/styles"
 
-export default function Dashboard() {
+export default function Dashboard(props) {
 	const classes = HomeStyles()
 
 	const [open, setOpen] = useState(false)
@@ -95,17 +95,25 @@ export default function Dashboard() {
 				<Divider />
 				<List>{mainListItems}</List>
 			</Drawer>
-			{add ? (
-				<main className={classes.content}>
-					<div className={classes.appBarSpacer} />
-					<AddWorkout />
-				</main>
-			) : (
-				<main className={classes.content}>
-					<div className={classes.appBarSpacer} />
-					<Home filter={search} />
-				</main>
-			)}
+			<main className={classes.content}>
+				<div className={classes.appBarSpacer} />
+				{/*props.home ? (
+					add ? (
+						<AddWorkout />
+					) : (
+						<Home filter={search} />
+					)
+				) : (
+					props.children
+				)*/}
+				{/*React.Children.map(props.children, (child) => {
+					console.log(child)
+					return React.cloneElement(child, {
+						filter: search
+					})
+				})*/}
+				{props.children}
+			</main>
 			<AddBtn btntype={add} btnhandle={handleAdd} />
 		</div>
 	)

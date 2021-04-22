@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
@@ -10,46 +11,88 @@ import LayersIcon from "@material-ui/icons/Layers"
 //import AssignmentIcon from "@material-ui/icons/Assignment"
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter"
 
+function IconWrapper(props) {
+	return (
+		<ListItem button>
+			<ListItemIcon>{props.children}</ListItemIcon>
+			<ListItemText primary={props.text} />
+		</ListItem>
+	)
+}
+
 function HomeIcon(props) {
 	return (
-		<SvgIcon {...props}>
-			<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-		</SvgIcon>
+		<IconWrapper text="Home">
+			<SvgIcon {...props}>
+				<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+			</SvgIcon>
+		</IconWrapper>
+	)
+}
+
+function WorkoutIcon(props) {
+	return (
+		<IconWrapper text="Workouts">
+			<FitnessCenterIcon />
+		</IconWrapper>
+	)
+}
+
+function TrackerIcon(props) {
+	return (
+		<IconWrapper text="Tracker">
+			<BarChartIcon />
+		</IconWrapper>
+	)
+}
+
+function ShareIcon(props) {
+	return (
+		<IconWrapper text="Share">
+			<PeopleIcon />
+		</IconWrapper>
+	)
+}
+
+function IntegrationsIcon(props) {
+	return (
+		<IconWrapper text="Integrations">
+			<LayersIcon />
+		</IconWrapper>
 	)
 }
 
 export const mainListItems = (
 	<div>
-		<ListItem button>
-			<ListItemIcon>
-				<HomeIcon />
-			</ListItemIcon>
-			<ListItemText primary="Home" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<FitnessCenterIcon />
-			</ListItemIcon>
-			<ListItemText primary="Workouts" />
-		</ListItem>
-
-		<ListItem button>
-			<ListItemIcon>
-				<BarChartIcon />
-			</ListItemIcon>
-			<ListItemText primary="Tracker" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<PeopleIcon />
-			</ListItemIcon>
-			<ListItemText primary="Share" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<LayersIcon />
-			</ListItemIcon>
-			<ListItemText primary="Integrations" />
-		</ListItem>
+		<Link
+			to="/home"
+			style={{ textDecoration: "none", color: "black" }}
+			onClick={() => console.log("Clicked Home Link")}>
+			<HomeIcon />
+		</Link>
+		<Link
+			to="/workouts"
+			style={{ textDecoration: "none", color: "black" }}
+			onClick={() => console.log("Clicked Workout Link")}>
+			<WorkoutIcon />
+		</Link>
+		<Link
+			to="/tracker"
+			style={{ textDecoration: "none", color: "black" }}
+			onClick={() => console.log("Clicked Tracker Link")}>
+			<TrackerIcon />
+		</Link>
+		<Link
+			to="/share"
+			style={{ textDecoration: "none", color: "black" }}
+			onClick={() => console.log("Clicked Share Link")}>
+			<ShareIcon />
+		</Link>
+		<Link
+			to="/integrations"
+			style={{ textDecoration: "none", color: "black" }}
+			onClick={() => console.log("Clicked Home Link")}>
+			<IntegrationsIcon />
+		</Link>
 	</div>
 )

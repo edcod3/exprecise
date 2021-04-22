@@ -32,7 +32,7 @@ export default function Home(props) {
 	const [disData, setdisData] = useState([{}])
 	useEffect(() => {
 		setdisData([{}])
-		if (props.filter === "") {
+		if (props.filter === "" || props.filter === undefined) {
 			setdisData(apiData)
 		} else {
 			const fltrd = apiData.filter((data) =>
