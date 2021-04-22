@@ -14,16 +14,13 @@ import { CardStyles, AddStyles } from "../../css/styles"
 import Br from "../../utils/Br"
 import { ExitableAlert } from "../../utils/Alert"
 
-export default function AddWorkout(props) {
+export default function AddWorkout() {
 	//CSS Styles
 	const cardStyle = CardStyles().root
 	const formStyle = AddStyles()
 
 	//React-Hook-Form Stuff
 	const { handleSubmit, control } = useForm()
-	//const {watch} = useForm()
-	//const {register } = useForm()
-	//const { errors } = useForm()
 
 	//State
 	const [addMsg, setaddMsg] = useState({ succ: false, msg: "" })
@@ -60,8 +57,6 @@ export default function AddWorkout(props) {
 				setaddMsg({ succ: true, msg: wo_title })
 			})
 	}
-
-	//console.log(watch("example"))
 
 	return (
 		<div>

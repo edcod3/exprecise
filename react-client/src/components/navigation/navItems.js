@@ -3,13 +3,12 @@ import { Link } from "react-router-dom"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
-//import ListSubheader from "@material-ui/core/ListSubheader"
 import SvgIcon from "@material-ui/core/SvgIcon"
 import PeopleIcon from "@material-ui/icons/People"
 import BarChartIcon from "@material-ui/icons/BarChart"
 import LayersIcon from "@material-ui/icons/Layers"
-//import AssignmentIcon from "@material-ui/icons/Assignment"
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter"
+import { ListItemLinkStyle } from "../../css/styles"
 
 function IconWrapper(props) {
 	return (
@@ -30,7 +29,7 @@ function HomeIcon(props) {
 	)
 }
 
-function WorkoutIcon(props) {
+function WorkoutIcon() {
 	return (
 		<IconWrapper text="Workouts">
 			<FitnessCenterIcon />
@@ -38,7 +37,7 @@ function WorkoutIcon(props) {
 	)
 }
 
-function TrackerIcon(props) {
+function TrackerIcon() {
 	return (
 		<IconWrapper text="Tracker">
 			<BarChartIcon />
@@ -46,7 +45,7 @@ function TrackerIcon(props) {
 	)
 }
 
-function ShareIcon(props) {
+function ShareIcon() {
 	return (
 		<IconWrapper text="Share">
 			<PeopleIcon />
@@ -54,7 +53,7 @@ function ShareIcon(props) {
 	)
 }
 
-function IntegrationsIcon(props) {
+function IntegrationsIcon() {
 	return (
 		<IconWrapper text="Integrations">
 			<LayersIcon />
@@ -62,37 +61,25 @@ function IntegrationsIcon(props) {
 	)
 }
 
+const linkItems = [
+	{ path: "home", component: <HomeIcon /> },
+	{ path: "workouts", component: <WorkoutIcon /> },
+	{ path: "tracker", component: <TrackerIcon /> },
+	{ path: "share", component: <ShareIcon /> },
+	{ path: "integrations", component: <IntegrationsIcon /> }
+]
+
 export const mainListItems = (
 	<div>
-		<Link
-			to="/home"
-			style={{ textDecoration: "none", color: "black" }}
-			onClick={() => console.log("Clicked Home Link")}>
-			<HomeIcon />
-		</Link>
-		<Link
-			to="/workouts"
-			style={{ textDecoration: "none", color: "black" }}
-			onClick={() => console.log("Clicked Workout Link")}>
-			<WorkoutIcon />
-		</Link>
-		<Link
-			to="/tracker"
-			style={{ textDecoration: "none", color: "black" }}
-			onClick={() => console.log("Clicked Tracker Link")}>
-			<TrackerIcon />
-		</Link>
-		<Link
-			to="/share"
-			style={{ textDecoration: "none", color: "black" }}
-			onClick={() => console.log("Clicked Share Link")}>
-			<ShareIcon />
-		</Link>
-		<Link
-			to="/integrations"
-			style={{ textDecoration: "none", color: "black" }}
-			onClick={() => console.log("Clicked Home Link")}>
-			<IntegrationsIcon />
-		</Link>
+		{linkItems.map((link, i) => {
+			return (
+				<Link
+					to={`/${link.path}`}
+					key={`link-${i}`}
+					style={ListItemLinkStyle}>
+					{link.component}
+				</Link>
+			)
+		})}
 	</div>
 )

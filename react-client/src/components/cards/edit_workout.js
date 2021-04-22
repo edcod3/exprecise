@@ -21,14 +21,11 @@ export default function EditWorkout(props) {
 
 	//React-Hook-Form Stuff
 	const { handleSubmit, control } = useForm()
-	//const {watch} = useForm()
-	//const {register } = useForm()
-	//const { errors } = useForm()
 
 	//State
 	const [editMsg, seteditMsg] = useState({ succ: false, msg: "" })
 	const onSubmit = (data) => {
-		console.log(data)
+		//console.log(data)
 		//console.log(props.workout)
 		client
 			.mutate({
@@ -64,8 +61,6 @@ export default function EditWorkout(props) {
 				seteditMsg({ succ: true, msg: wo_title })
 			})
 	}
-
-	//console.log(watch("example"))
 
 	return (
 		<Card className={cardStyle} variant="outlined">

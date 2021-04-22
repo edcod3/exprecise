@@ -6,9 +6,6 @@ import DeleteButton from "../buttons/del_btn"
 import EditButton from "../buttons/edit_btn"
 
 export default function ButtonWrapper(props) {
-	//const [showEdit, setshowEdit] = useState(false)
-	//const [delShow, setdelShow] = useState({ visible: false, title: "" })
-
 	const handleDelete = () => {
 		console.log(props.data)
 		client
@@ -26,7 +23,6 @@ export default function ButtonWrapper(props) {
 			})
 			.then(() => {
 				//const wo_title = result.data.delete.title
-				//setdelShow({ visible: true, title: wo_title })
 				window.location.reload()
 			})
 	}

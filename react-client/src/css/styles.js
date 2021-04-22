@@ -168,3 +168,5 @@ export const AddStyles = makeStyles((theme) => ({
 		width: "25%"
 	}
 }))
+
+export const ListItemLinkStyle = { textDecoration: "none", color: "black" }
